@@ -1,6 +1,6 @@
 # Agent Observability TUI — Construction Plan
 
-**Status:** Implementation verified; public-repository verification pending
+**Status:** Completed and published
 **Date:** 2026-07-10
 **Execution mode:** direct on `main` for a new repository, with an atomic initial release commit
 

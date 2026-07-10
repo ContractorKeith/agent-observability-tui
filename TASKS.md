@@ -12,7 +12,7 @@
 - [x] Implement atomic JSON/Markdown evidence export
 - [x] Complete README, architecture/schema/privacy docs, community files, and templates
 - [x] Run fresh-eyes spec/security audit, remediate findings, and verify clean wheel install
-- [ ] Create and verify the public `ContractorKeith/agent-observability-tui` repository
+- [x] Create and verify the public `ContractorKeith/agent-observability-tui` repository
 
 ## Backlog
 
@@ -29,4 +29,5 @@
 The completed items above passed the construction-plan acceptance checks locally on 2026-07-10:
 Ruff, 72 tests on Python 3.11 and 3.14, wheel/sdist build, clean Python 3.12 wheel command
 smoke, dependency audit, Bandit medium/high scan, workflow YAML parsing, and local-link checks.
-Publication remains open until the public URL, GitHub checks, and branch equality are verified.
+The public repository, CI, CodeQL, Security workflow, vulnerability-reporting setting, and exact
+local/remote branch equality were also verified before this completion record was published.
