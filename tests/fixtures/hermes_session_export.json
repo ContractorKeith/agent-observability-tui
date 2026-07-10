@@ -1,0 +1,36 @@
+{
+  "id": "20260710_120000_abc123",
+  "source": "cli",
+  "model": "local-model",
+  "started_at": 1783684800.0,
+  "ended_at": 1783684815.0,
+  "end_reason": "done",
+  "input_tokens": 31,
+  "output_tokens": 9,
+  "cache_read_tokens": 2,
+  "reasoning_tokens": 4,
+  "estimated_cost_usd": 0.0021,
+  "pricing_version": "fixture-v1",
+  "messages": [
+    {
+      "id": 101,
+      "session_id": "20260710_120000_abc123",
+      "role": "assistant",
+      "content": "I will inspect it.",
+      "tool_calls": [
+        {"id": "call-1", "function": {"name": "terminal", "arguments": "{\"command\":\"pwd\"}"}}
+      ],
+      "timestamp": 1783684801.0,
+      "token_count": 7
+    },
+    {
+      "id": 102,
+      "session_id": "20260710_120000_abc123",
+      "role": "tool",
+      "content": "/safe/path",
+      "tool_call_id": "call-1",
+      "tool_name": "terminal",
+      "timestamp": 1783684802.0
+    }
+  ]
+}

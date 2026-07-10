@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-observability-tui"
+version = "0.1.0"
+description = "A local-first TUI for tracing, replaying, and comparing agent and MCP sessions."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "ContractorKeith" }]
+keywords = ["agents", "mcp", "observability", "textual", "tui", "tracing"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development :: Debuggers",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "platformdirs>=4.3,<5",
+  "psutil>=6.1,<8",
+  "textual>=8.2,<9",
+]
+
+[project.urls]
+Homepage = "https://github.com/ContractorKeith/agent-observability-tui"
+Documentation = "https://github.com/ContractorKeith/agent-observability-tui#readme"
+Issues = "https://github.com/ContractorKeith/agent-observability-tui/issues"
+Source = "https://github.com/ContractorKeith/agent-observability-tui"
+
+[project.scripts]
+agent-observe = "agent_observability_tui.cli:main"
+aotui = "agent_observability_tui.cli:main"
+
+[dependency-groups]
+dev = [
+  "bandit==1.9.4",
+  "build>=1.3,<2",
+  "pip-audit==2.10.1",
+  "pytest>=8.4,<10",
+  "pytest-asyncio>=1.2,<2",
+  "ruff>=0.15,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_observability_tui"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/agent_observability_tui/app.tcss" = "agent_observability_tui/app.tcss"
+"src/agent_observability_tui/prices.toml" = "agent_observability_tui/prices.toml"
+"src/agent_observability_tui/demo-trace.jsonl" = "agent_observability_tui/demo-trace.jsonl"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]

@@ -1,0 +1,68 @@
+Screen {
+    layout: vertical;
+    background: #0b1020;
+    color: #dbeafe;
+}
+
+Header {
+    background: #111a33;
+}
+
+#metrics {
+    height: 3;
+    padding: 1 2;
+    background: #12213f;
+    color: #7dd3fc;
+}
+
+#trace-layout {
+    height: 1fr;
+    layout: horizontal;
+}
+
+#sessions-panel {
+    width: 25%;
+    min-width: 24;
+    border: solid #29456f;
+}
+
+#events-panel {
+    width: 45%;
+    min-width: 42;
+    border: solid #29456f;
+}
+
+#detail-panel {
+    width: 30%;
+    min-width: 32;
+    border: solid #29456f;
+    padding: 0 1;
+    overflow: auto;
+}
+
+#filter {
+    dock: top;
+    height: 3;
+}
+
+#events, #sessions, #comparison {
+    height: 1fr;
+}
+
+#comparison {
+    margin: 1;
+}
+
+.panel-title {
+    height: 1;
+    text-style: bold;
+    color: #a5f3fc;
+}
+
+#evidence {
+    padding: 1 2;
+}
+
+Footer {
+    background: #111a33;
+}

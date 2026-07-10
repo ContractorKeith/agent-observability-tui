@@ -1,0 +1,71 @@
+name: Adapter proposal
+description: Propose or update support for a documented captured agent or MCP event format.
+title: "[Adapter]: "
+labels:
+  - enhancement
+  - adapter
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adapter support parses a documented captured format. It does not imply passive attachment or transparent proxying. Use only synthetic, publishable records.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I read the adapter, schema, privacy, and contribution documentation.
+          required: true
+        - label: I will not contribute a real session, credential, prompt, customer record, or private tool output.
+          required: true
+        - label: I can identify the exact upstream version or documented schema represented by the fixtures.
+          required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Framework or source
+      placeholder: "Framework name and event/export facility"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Exact tested version or schema
+      placeholder: "v1.2.3 or documentation revision"
+    validations:
+      required: true
+
+  - type: textarea
+    id: docs
+    attributes:
+      label: Public format documentation
+      description: Link the authoritative event/export documentation. Do not link private data.
+    validations:
+      required: true
+
+  - type: textarea
+    id: mapping
+    attributes:
+      label: Canonical mapping
+      description: Describe event category/kind, timestamps, correlation, usage, missing fields, and sanitized unknown-field handling.
+    validations:
+      required: true
+
+  - type: textarea
+    id: lifecycle
+    attributes:
+      label: Capture boundary and lifecycle
+      description: State whether input is completed-file import, file watch, or supervised child output and how partial/lost input is diagnosed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: fixtures
+    attributes:
+      label: Synthetic fixture and test plan
+      description: Cover malformed, oversized, hostile text, nested secrets, ordering, correlation, unknown fields, and upstream-version drift as relevant.
+    validations:
+      required: true

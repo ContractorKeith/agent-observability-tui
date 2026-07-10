@@ -1,0 +1,47 @@
+name: Security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "17 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-security:
+    name: Python and dependency security
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Export locked runtime dependencies
+        run: uv export --locked --no-dev --no-emit-project --output-file /tmp/requirements.txt
+
+      - name: Sync locked security tools
+        run: uv sync --locked --all-groups
+
+      - name: Audit dependencies
+        run: uv run --locked pip-audit --requirement /tmp/requirements.txt --progress-spinner off
+
+      - name: Scan Python source
+        run: uv run --locked bandit --recursive src --exclude tests --severity-level medium --confidence-level medium

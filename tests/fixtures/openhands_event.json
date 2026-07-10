@@ -1,0 +1,16 @@
+{
+  "source": "agent",
+  "id": "oh-4",
+  "timestamp": "2026-07-10T12:03:00Z",
+  "kind": "ActionEvent",
+  "action": {
+    "kind": "TerminalToolAction",
+    "command": "python -m pytest"
+  },
+  "token_usage": {
+    "input_tokens": 13,
+    "output_tokens": 8
+  },
+  "llm_metrics": {"accumulated_cost": 0.0012},
+  "unknown_openhands_field": {"still": "visible"}
+}

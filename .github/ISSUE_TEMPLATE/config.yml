@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Setup and usage support
+    url: https://github.com/ContractorKeith/agent-observability-tui/blob/main/SUPPORT.md
+    about: Read the support and command documentation before filing a bug.
+  - name: Private security report
+    url: https://github.com/ContractorKeith/agent-observability-tui/security/advisories/new
+    about: Report suspected vulnerabilities privately and never attach a sensitive trace publicly.

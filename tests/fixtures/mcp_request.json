@@ -1,0 +1,16 @@
+{
+  "jsonrpc": "2.0",
+  "id": 7,
+  "method": "tools/call",
+  "timestamp": "2026-07-10T12:01:00Z",
+  "direction": "outbound",
+  "transport": "stdio",
+  "params": {
+    "name": "shell",
+    "arguments": {
+      "command": "printf hello",
+      "Authorization": "Bearer fixture-example-secret-123456"
+    }
+  },
+  "vendor_extension": {"retained": true}
+}

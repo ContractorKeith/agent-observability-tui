@@ -1,0 +1,98 @@
+name: Bug report
+description: Report a reproducible CLI, adapter, storage, replay, TUI, or export problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Agent Observability TUI. Use only synthetic, publishable traces. Never attach credentials, real prompts, customer data, private tool output, a session database, or an unsanitized export.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues for this problem.
+          required: true
+        - label: This is not a security vulnerability; security reports use the private advisory link.
+          required: true
+        - label: Every trace, log, screenshot, and path in this report is synthetic and safe to publish.
+          required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - installation or CLI
+        - native adapter
+        - supervised child output
+        - captured MCP adapter
+        - Hermes adapter
+        - OpenHands adapter
+        - storage or migration
+        - replay or comparison
+        - TUI or terminal layout
+        - evidence export or verification
+        - metrics or cost provenance
+        - documentation
+    validations:
+      required: true
+
+  - type: input
+    id: source_version
+    attributes:
+      label: Adapter and source version
+      description: Include the adapter version plus framework/export version when applicable.
+      placeholder: "mcp adapter 1; synthetic JSON-RPC 2.0 capture"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Use the smallest synthetic input and exact command. Do not paste active terminal control sequences.
+      placeholder: |
+        1. Create synthetic-trace.jsonl with ...
+        2. Run uv run agent-observe import synthetic-trace.jsonl --adapter native --json
+        3. Run ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include sanitized error text and state whether data reached the DB, TUI, export, logs, or test output.
+    validations:
+      required: true
+
+  - type: input
+    id: session
+    attributes:
+      label: Synthetic session ID
+      description: Optional; include only if it contains no private data.
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      value: |
+        - OS:
+        - Terminal and size:
+        - Python (`python --version`):
+        - uv (`uv --version`):
+        - Agent Observability TUI version/commit:
+        - Install method (source checkout, wheel, uv tool, pipx):
+    validations:
+      required: true

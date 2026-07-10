@@ -1,0 +1,19 @@
+{
+  "provider": "hermes",
+  "session_id": "hermes-export-session",
+  "event_id": "hermes-3",
+  "type": "tool_call",
+  "timestamp": "2026-07-10T12:02:00Z",
+  "tool": {
+    "name": "web_search",
+    "arguments": {"query": "agent tracing"}
+  },
+  "usage": {
+    "prompt_tokens": 21,
+    "completion_tokens": 5,
+    "reasoning_tokens": 2,
+    "total_tokens": 28
+  },
+  "model": "local-model",
+  "unknown_hermes_field": "keep me"
+}

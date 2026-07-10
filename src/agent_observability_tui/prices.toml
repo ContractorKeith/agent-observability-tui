@@ -1,0 +1,23 @@
+[catalog]
+version = "2026-07-10-demo"
+effective_from = "2026-07-10"
+currency = "USD"
+note = "Bundled entries are illustrative/local. Configure provider rates for real estimates."
+
+[[models]]
+pattern = "local/*"
+input_per_million = 0.0
+output_per_million = 0.0
+cache_read_per_million = 0.0
+cache_write_per_million = 0.0
+reasoning_per_million = 0.0
+provenance = "Local runtime API fee only; energy and hardware costs are excluded."
+
+[[models]]
+pattern = "demo/*"
+input_per_million = 1.0
+output_per_million = 4.0
+cache_read_per_million = 0.1
+cache_write_per_million = 1.25
+reasoning_per_million = 4.0
+provenance = "Fictional demo rate; not a provider price."
