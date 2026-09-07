@@ -9,6 +9,18 @@ not been published to PyPI.
 
 ## [Unreleased]
 
+### Fixed
+
+- Stop dashboard refresh callbacks during Textual shutdown so a removed metrics widget is not
+  queried.
+
+### Changed
+
+- Pause scheduled CodeQL and security scans plus Dependabot polling; keep push, pull-request,
+  and manually dispatched checks.
+- Remove the unsupported dependency-review workflow. The security workflow retains its locked
+  dependency audit.
+
 ### Added
 
 - Local-first Textual dashboard for live and stored session inspection.
@@ -26,6 +38,6 @@ not been published to PyPI.
   sanitized records, with documented adversarial limitations.
 - Public architecture, schema, adapter, privacy, evidence, security, support, contribution,
   conduct, roadmap, and command documentation.
-- Pinned CI, CodeQL, dependency review, and Dependabot configuration.
+- Pinned CI, CodeQL, and security workflows.
 
 [Unreleased]: https://github.com/ContractorKeith/agent-observability-tui/commits/main

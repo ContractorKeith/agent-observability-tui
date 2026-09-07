@@ -143,7 +143,7 @@ contributor path. Publication is not complete until the remote state and CI are 
 **Tasks:**
 
 1. Add README, architecture, schema, adapters, privacy/threat model, roadmap, changelog, support,
-   contributing, security, Contributor Covenant, issue/PR templates, Dependabot, and CI.
+   contributing, security, Contributor Covenant, issue/PR templates, and CI.
 2. Run requirement-by-requirement fresh-eyes audit and security review; remediate all critical/high findings.
 3. Run lint, format, tests, build, clean-wheel smoke install, demo summary, replay, comparison, export,
    and chain verification.
@@ -173,3 +173,8 @@ contributor path. Publication is not complete until the remote state and CI are 
 Record scope changes in this file and `CHANGELOG.md`. A step may be split when one risk dominates,
 reordered only when dependencies remain satisfied, or deferred only if the PRD claim and README are
 changed first. Never mark a task complete because code exists; attach the verification result.
+
+### 2026-09-07 maintenance update
+
+Dependabot polling and scheduled CodeQL and security scans are paused because this low-use project
+does not need unattended maintenance. Push, pull-request, and manually dispatched workflows remain.

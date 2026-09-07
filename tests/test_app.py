@@ -44,3 +44,18 @@ async def test_pause_and_filter_only_change_ui_projection(tmp_path: Path) -> Non
         await pilot.pause()
         assert app.query_one("#events", DataTable).row_count == 1
         assert len(tuple(observatory.replay(session_id))) == 7
+
+
+async def test_refresh_does_not_query_widgets_during_shutdown(tmp_path: Path) -> None:
+    observatory = Observatory.open(tmp_path / "sessions.sqlite3")
+    session_id = observatory.import_path(DEMO_TRACE, adapter="native", session_id="demo")
+    app = ObservabilityApp(observatory, session_id=session_id)
+
+    async with app.run_test():
+        metrics = app.query_one("#metrics", Static)
+        app._running = False
+        try:
+            await metrics.remove()
+            app.refresh_data()
+        finally:
+            app._running = True

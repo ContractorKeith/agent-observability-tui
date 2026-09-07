@@ -9,6 +9,7 @@ from rich.text import Text
 from textual import on
 from textual.app import App, ComposeResult
 from textual.containers import Horizontal, Vertical
+from textual.timer import Timer
 from textual.widgets import (
     DataTable,
     Footer,
@@ -48,6 +49,7 @@ class ObservabilityApp(App[None]):
         self._session_signature: tuple[tuple[str, int, str], ...] = ()
         self._event_signature: tuple[str | None, int, str] = (None, -1, "")
         self._events_by_sequence: dict[int, TraceEvent] = {}
+        self._refresh_timer: Timer | None = None
 
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
@@ -90,9 +92,25 @@ class ObservabilityApp(App[None]):
             "Resource state",
         )
         self.refresh_data(force=True)
-        self.set_interval(0.5, self.refresh_data)
+        self._refresh_timer = self.set_interval(0.5, self.refresh_data)
+
+    def on_exit_app(self) -> None:
+        """Stop polling as soon as Textual starts shutting down."""
+        self._stop_refresh_timer()
+
+    def on_unmount(self) -> None:
+        """Release the refresh timer when the app unmounts."""
+        self._stop_refresh_timer()
+
+    def _stop_refresh_timer(self) -> None:
+        if self._refresh_timer is not None:
+            self._refresh_timer.stop()
+            self._refresh_timer = None
 
     def refresh_data(self, *, force: bool = False) -> None:
+        # Textual stops the app before it removes the default screen's widgets.
+        if not self.is_running:
+            return
         if self.paused and not force:
             return
         sessions = self.observatory.sessions()
